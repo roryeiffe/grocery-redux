@@ -1,0 +1,7 @@
+a {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+    margin: auto;
+}
