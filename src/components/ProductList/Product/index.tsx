@@ -1,7 +1,40 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {useState} from 'react';
+
 
 // a singular product item, represented by a bootstrap card:
 const Product = (props:any) => {
+  // message letting the user know if they added the item successfully:
+  const [message, setMessage] = useState("");
+  // Get the cart to see if we already have this item:
+  const cart = useSelector((state:any) => state.user.cart);
+
+  const dispatch = useDispatch();
+
+  const addToCart = (product:any) => {
+    // set the quantity to 1:
+    product.quantity = 1;
+    // update the store with this payload, if this is a new product:
+    if(!checkInCart(cart, product)){
+      dispatch({type: 'ADD_ITEM', payload: product});
+      setMessage("Item added successfully!");
+    }
+    else {
+      setMessage("Already have item in cart!");
+    }
+  }
+
+  // check if the item is in this user's cart:
+  const checkInCart = (cart:any, item:any) => {
+    for(let item_ of cart) {
+      if (item_.productName === item.productName) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   return (
     <div className="col-lg-4">
       <div className="card">
@@ -17,9 +50,11 @@ const Product = (props:any) => {
           </h3>
           <h5 className="card-title">{props.data.unit}</h5>
           <p className="card-text">{props.data.description}</p>
-          <a href="#" className="btn btn-primary">
+          <a href="#" className="btn btn-primary" onClick = {addToCart.bind(this,props.data)}>
             Add to Cart
           </a>
+          <br />
+           {message}
         </div>
       </div>
     </div>

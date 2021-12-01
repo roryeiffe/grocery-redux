@@ -26,10 +26,11 @@ const SubCategory = (props:any) => {
     dispatch({type: 'UPDATE_SUB_CATEGORY', payload: newSubCatId})
   }
 
+
   useEffect(() => {
     axios
       .get("https://apolis-grocery.herokuapp.com/api/subcategory/" + props.categoryId)
-      .then((response) => {
+      .then( (response) => {
         setSubCategory({subCategories: response.data.data});
         // use the passed in function to tell the parent company
         // what the default subcategory is:
@@ -37,7 +38,7 @@ const SubCategory = (props:any) => {
       })
       .catch((error) => console.error(error));
 
-  },[]);
+  },[props.categoryId, subCategory.subCategories]);
 
   return (
     <ul className="list-group">

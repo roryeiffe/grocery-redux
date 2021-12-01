@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Footer from "../../components/Footer";
 import Login from "../../components/Login";
 import Register from "../../components/Register";
@@ -13,17 +13,17 @@ const AuthPage = () => {
       {showLogin && (
         <div>
           <Login />
-          <a onClick={() => setShowLogin(false)}>
+          <p onClick={() => setShowLogin(false)}>
             New user? Click here to register!
-          </a>
+          </p>
         </div>
       )}
       {!showLogin && (
         <div>
           <Register />
-          <a onClick={() => setShowLogin(true)}>
+          <p onClick={() => setShowLogin(true)}>
             Returning user? Click here to log in!
-          </a>
+          </p>
         </div>
       )}
       <Footer />

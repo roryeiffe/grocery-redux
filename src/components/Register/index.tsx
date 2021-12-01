@@ -1,14 +1,25 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
   const [user, setUser] = useState({
     firstName: "",
     email: "",
     password: "",
-    gender: "",
-    food: [],
-    mobile: ""
+    mobile: "",
+    // gender: "",
+    // food: []
   });
+
+  const [message, setMessage] = useState("");
+
+  const dispatch = useDispatch();
+
+  const onRegisterSuccess = () => {
+    setMessage("Registration successful!");
+    dispatch({type: 'LOGIN'});
+  }
 
   function onChangeHandler(event:any) {
     setUser({
@@ -30,10 +41,20 @@ const Register = () => {
   function onSubmitHandler(event:any) {
     event.preventDefault();
     console.log(user);
+    axios.post('http://apolis-grocery.herokuapp.com/api/auth/register', user)
+    .then( response => {
+      onRegisterSuccess();
+      console.log(response);
+    })
+    .catch(error => {
+      setMessage("Registration failed!");
+      console.log(error);
+    });
   }
 
   return (
     <div className="container">
+      <h1 className = "text-primary">{message}</h1>
       <h2>Register</h2>
       <form onSubmit={onSubmitHandler}>
         <div className="form-group">
@@ -80,7 +101,7 @@ const Register = () => {
             required
           />
         </div>
-        <h5>Gender</h5>
+        {/* <h5>Gender</h5>
         <div className="form-check">
           <input
             className="form-check-input"
@@ -154,7 +175,7 @@ const Register = () => {
             onChange={onCheckboxChange}
           />
           <label className="form-check-label">Grains</label>
-        </div>
+        </div> */}
         <input type="submit" value="Register" className="btn btn-primary" />
       </form>
     </div>

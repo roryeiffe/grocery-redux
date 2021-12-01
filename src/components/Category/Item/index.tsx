@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 
 interface ICategory{
     catImage: string;
@@ -24,7 +25,7 @@ const Item = (props:IProps) => {
                 <div className="card-body">
                     <h5 className="card-title">{data.catName}</h5>
                     <p className="card-text">{data.catDescription}</p>
-                    <a href={'product/' + data.catId} className="btn btn-primary">View {data.catName}</a>
+                    <Link to={'product/' + data.catId} className="btn btn-primary">View {data.catName}</Link>
                 </div>
             </div>
         </div>

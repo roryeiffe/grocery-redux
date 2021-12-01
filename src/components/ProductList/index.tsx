@@ -17,7 +17,7 @@ const ProductList = () => {
             setProducts(response.data.data);
         })
         .catch(error => console.error(error));
-    })
+    }, [subCategoryId])
 
     // display products in a grid:
     return (

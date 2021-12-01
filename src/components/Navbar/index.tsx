@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   return (
@@ -20,14 +21,14 @@ const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="/">
+            <Link className="nav-link" to="/">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/Auth">
-              Login
-            </a>
+            <Link className="nav-link" to="/Auth">
+              Login/Register
+            </Link>
           </li>
           <li className="nav-item dropdown">
             <a
@@ -41,19 +42,24 @@ const Navbar = () => {
               View Products
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="/product/1">
+              <Link className="dropdown-item" to="/product/1">
                 Chicken
-              </a>
-              <a className="dropdown-item" href="/product/2">
+              </Link>
+              <Link className="dropdown-item" to="/product/2">
                 Vegetable Meals
-              </a>
-              <a className="dropdown-item" href="/product/3">
+              </Link>
+              <Link className="dropdown-item" to="/product/3">
                 Fruits and Vegetables
-              </a>
-              <a className="dropdown-item" href="/product/4">
+              </Link>
+              <Link className="dropdown-item" to="/product/4">
                 Beef
-              </a>
+              </Link>
             </div>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/cart">
+              View Cart
+            </Link>
           </li>
         </ul>
       </div>
