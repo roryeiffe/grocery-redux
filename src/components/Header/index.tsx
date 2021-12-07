@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 const Header = () => {
   return (
     <div className="jumbotron text-center">
@@ -7,9 +9,9 @@ const Header = () => {
         essentials
       </p>
       <hr className="my-4" />
-      <a className="btn btn-primary btn-lg" href="#" role="button">
+      <Link className="btn btn-primary btn-lg" to= 'product/1'>
         Start Shopping
-      </a>
+      </Link>
     </div>
   );
 };

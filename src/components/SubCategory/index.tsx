@@ -22,9 +22,10 @@ const SubCategory = (props:any) => {
   const dispatch = useDispatch();
 
   // given the user clicking on a sub category, update the redux store:
-  const changeSubCategoryIdHandler = (newSubCatId:number) => {
+  const changeSubCategoryIdHandler = React.useCallback( (newSubCatId:number ) => {
+    console.log(newSubCatId);
     dispatch({type: 'UPDATE_SUB_CATEGORY', payload: newSubCatId})
-  }
+  }, [dispatch]);
 
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const SubCategory = (props:any) => {
       })
       .catch((error) => console.error(error));
 
-  },[props.categoryId, subCategory.subCategories]);
+  },[props.categoryId, subCategory.subCategories, changeSubCategoryIdHandler]);
 
   return (
     <ul className="list-group">

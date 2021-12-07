@@ -27,7 +27,7 @@ const Category = () => {
   }, []);
 
   return (
-    <div className="wrapper">
+    <div className="container">
       <div className="row">
       {categories.map((item:ICategory) => (
           <Item data={item} />

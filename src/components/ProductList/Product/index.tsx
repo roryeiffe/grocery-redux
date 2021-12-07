@@ -42,6 +42,7 @@ const Product = (props:any) => {
           src={"http://rjtmobile.com/grocery/images/" + props.data.image}
           className="card-img-top"
           alt="..."
+          height = '200vw'
         />
         <div className="card-body">
             <h2>{props.data.productName}</h2>
@@ -50,9 +51,9 @@ const Product = (props:any) => {
           </h3>
           <h5 className="card-title">{props.data.unit}</h5>
           <p className="card-text">{props.data.description}</p>
-          <a href="#" className="btn btn-primary" onClick = {addToCart.bind(this,props.data)}>
+          <button className="btn btn-primary" onClick = {() => addToCart(props.data)}>
             Add to Cart
-          </a>
+          </button>
           <br />
            {message}
         </div>

@@ -8,6 +8,7 @@ const ProductList = () => {
 
     // get sub categoryId from store
     const subCategoryId = useSelector((state:any) => state.categories.subCategoryId);
+    console.log(subCategoryId);
 
     useEffect(()=> {
         // get all items of the subcategory:
